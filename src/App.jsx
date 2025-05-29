@@ -1,31 +1,26 @@
-import { useState, useEffect } from 'react'
-import Home from Home
-import nuevasReservas from nuevasReservas
-import Citas from Citas
-import {Routes, Route, link} from 'react-router'
-import '/src/index.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router'
+import Navbar from './navbar'
+import Home from './pages/home'
+import MisCitas from './pages/misCitas'
+import NuevasReservas from './pages/nuevasReservas'
+import './index.css'
 
 function App() {
-  const [citas, setCitas] = useState([])
-
-  useEffect(() => {
-    const citasGuardadas = localStorage.getItem('citas')
-    if (citasGuardadas) {
-      setCitas(JSON.parse(citasGuardadas))
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('citas', JSON.stringify(citas))
-  }, [citas])
-
   return (
-    <Routes>
-      <Route path="/src/home.jsx" element={ <Home /> } />
-      <Route path="/src/misCitas.jsx" element={ <misCitas /> } />
-      <Route path="/src/nuevasReservas.jsx" element={ <nuevasReservas /> } />
-    </Routes>
-  );
+    <BrowserRouter>
+    <Router>
+      <div className="container">
+        <h1>Administrador de pacientes</h1>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/citas" element={<MisCitas />} />
+          <Route path="/reservas" element={<NuevasReservas />} />
+        </Routes>
+      </div>
+    </Router>
+    </BrowserRouter>
+  )
 }
 
 export default App

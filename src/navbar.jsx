@@ -1,25 +1,13 @@
-import { Outlet, Link } from "react-router-dom";
+import { Link } from 'react-router'
 
-    const navbar = () => {
-      return (
-        <>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/src/home.jsx">Home</Link>
-              </li>
-              <li>
-                <Link to="/src/misCitas.jsx">Blogs</Link>
-              </li>
-              <li>
-                <Link to="/src/nuevasReservas.jsx">Contact</Link>
-              </li>
-            </ul>
-          </nav>
-    
-          <Outlet />
-        </>
-      )
-    }
-    export default navbar;
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <Link to="/">Home</Link>
+      <Link to="/citas">Mis Citas</Link>
+      <Link to="/reservas">Nuevas Reservas</Link>
+    </nav>
+  )
+}
 
+export default Navbar
